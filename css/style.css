@@ -33,9 +33,13 @@ h1 {
     color: #76664f;
 }
 
+.startScreen[hidden] {
+    display: none;
+}
 
 
-.game-layout {
+
+.gameLayout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,8 +48,13 @@ h1 {
     margin: 0 auto;
 }
 
+
+/* CLUE BOARD */
+
 .board {
     width: 65%;
+    position: relative;
+
 }
 
 .board img {
@@ -54,6 +63,8 @@ h1 {
     height: auto;
     object-fit: contain;
 }
+
+/* PHONE */
 
 
 .phone {
@@ -81,6 +92,7 @@ h1 {
     height: auto;
 }
 
+/* DIALOGUE */
 
 
 .dialogueOverlay {
@@ -124,6 +136,106 @@ h1 {
 
 .dialogueOverlay[hidden] {
     display: none;
+}
+
+/* STAGES */
+
+.stageOne,
+.stageTwo,
+.stageThree {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+    pointer-events: none;
+}
+
+/* CLUE BUTTON */
+
+.clueButton {
+    position: relative;
+    width: 100px;
+    margin: 16px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+
+    pointer-events: auto;
+}
+
+.clueButton img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+
+
+/* CLUE OVERLAY */
+
+.clueOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1001;
+}
+
+.clueBox {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 750px;
+    max-width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 24px;
+    background: #f2eadb;
+    color: #252525;
+    border: 2px solid #76664f;
+    border-radius: 8px;
+}
+
+.clueBox > img {
+    width: 45%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.clueDetails {
+    flex: 1;
+}
+
+.clueDetails h2 {
+    margin-bottom: 16px;
+}
+
+.clueDetails p {
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.clueDetails button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.clueOverlay[hidden] {
+    display: none !important;
+}
+
+
+
+
+[hidden] {
+    display: none !important;
 }
 
 

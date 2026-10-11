@@ -22,7 +22,7 @@
         </section>
 
 
-         <main class="game-layout" hidden>
+         <main class="gameLayout" hidden>
 
             <!-- DETECTIVE BOARD -->
 
@@ -30,7 +30,18 @@
 
                 <img src="images/board.jpg" alt="Detective board">
 
-                <section class="stageOne"></section>
+                <section class="stageOne">
+
+                    <button id="placeholderClue" class="clueButton">
+                        <img src="images/placeholder.png" alt="Placeholder evidence clue">
+                        
+                    </button>
+
+                    <button id="secondClue" class="clueButton">
+                        <img src="images/placeholder.png" alt="another clue">
+                    </button>
+
+                </section>
                 <section class="stageTwo"></section>
                 <section class="stageThree"></section>
             </section>
@@ -60,6 +71,28 @@
 
                 </section>
 
+            </div>
+
+            <!-- CLUE OVERLAY -->
+
+            <div id="clueOverlay" class="clueOverlay" hidden>
+                <section class="clueBox">
+
+                    <img id="clueImage"
+                        src="images/placeholder.png"
+                        alt="Evidence clue">
+
+                    <div class="clueDetails">
+                        <h2 id="clueTitle">Evidence #01</h2>
+
+                        <p id="clueDescription">
+                            put clue description here
+                        </p>
+
+                        <button id="backToBoardButton">Back to Board</button>
+                    </div>
+
+                </section>
             </div>
 
              

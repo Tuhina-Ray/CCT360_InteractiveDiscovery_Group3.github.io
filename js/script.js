@@ -1,9 +1,55 @@
+const startScreen = document.getElementById("startScreen");
+const startButton = document.getElementById("startButton");
+
 const phoneButton = document.getElementById("phoneButton");
 const dialogueOverlay = document.getElementById("dialogueOverlay");
 const speakerName = document.getElementById("speakerName");
 const dialogueText = document.getElementById("dialogueText");
 const nextButton = document.getElementById("nextButton");
 const ringSound = document.getElementById("ringSound");
+
+
+
+// const placeholderClue = document.getElementById("placeholderClue");
+
+const clueOverlay = document.getElementById("clueOverlay");
+const clueImage = document.getElementById("clueImage");
+const clueTitle = document.getElementById("clueTitle");
+const clueDescription = document.getElementById("clueDescription");
+const backToBoardButton = document.getElementById("backToBoardButton");
+
+const clues = {
+
+    placeholderClue: {
+        image: "images/placeholder.png",
+        alt: "Evidence bag",
+        title: "Evidence #01",
+        description: "A sealed evidence bag containing an unidentified item."
+    },
+
+    secondClue: {
+        image: "images/placeholder.png",
+        alt: "Case report",
+        title: "Case Report",
+        description: "An official report containing details about the case."
+    }
+
+
+
+}
+
+
+
+startButton.addEventListener("click", () => {
+    startScreen.hidden = true;
+
+    
+    document.querySelector(".gameLayout").hidden = false;
+
+    ringSound.play().catch(error => {
+        console.log("Could not play ringing sound.");
+    });
+});
 
 
 ringSound.play().catch(error => {
@@ -68,4 +114,22 @@ nextButton.addEventListener("click", () => {
     }
 });
 
+//THIS IS THE CLUE BUTTON
+
+document.querySelectorAll(".clueButton").forEach((button) => {
+    button.addEventListener("click", () => {
+        const clue = clues[button.id];
+
+        clueImage.src = clue.image;
+        clueImage.alt = clue.alt;
+        clueTitle.textContent = clue.title;
+        clueDescription.textContent = clue.description;
+
+        clueOverlay.hidden = false;
+    });
+});
+
+backToBoardButton.addEventListener("click", () => {
+    clueOverlay.hidden = true;
+});
 
