@@ -3,12 +3,72 @@
     
     <head>
         <title>interactive discovery</title>
+        <link rel="stylesheet" href="css/style.css">
+
     </head>
 
     <body>
-        <h1> interactive discovery</h1>
-        <h2> test text</h2>
-        <p>another test</p>
+
+        <h1>Interactive Discovery</h1>
+
+        <!-- TITLE SCREEN -->
+        <section id="startScreen" class="startScreen">
+            <h1> GAME TITLE</h1>
+
+            <p class="gameSubtitle">CCT360, by:...</p>
+
+            <button id="startButton">Start Investigation</button>
+
+        </section>
+
+
+         <main class="game-layout" hidden>
+
+            <!-- DETECTIVE BOARD -->
+
+            <section class="board">
+
+                <img src="images/board.jpg" alt="Detective board">
+
+                <section class="stageOne"></section>
+                <section class="stageTwo"></section>
+                <section class="stageThree"></section>
+            </section>
+
+            <!-- PHONE -->
+
+            <section class="phone">
+                <button id ="phoneButton" class = phoneButton>
+                    <img src="images/Phone.png" alt="Telephone">
+                </button>
+                
+            </section>
+
+
+            <!-- DIALOGUE BOX -->
+
+            <div id="dialogueOverlay" class ="dialogueOverlay" hidden>
+
+                <section class="dialogueBox">
+                    <h2 id="speakerName">Lieutenant</h2>
+
+                    <p id ="dialogueText">
+                        Incoming call... 
+                    </p>
+
+                    <button id="nextButton">Continue</button>
+
+                </section>
+
+            </div>
+
+             
+
+        </main>
+        <audio id="ringSound" src="sounds/PhoneRinging.mp3" loop></audio>
+
+        <script src="js/script.js"></script>
+        
     </body>
 </html>
 
