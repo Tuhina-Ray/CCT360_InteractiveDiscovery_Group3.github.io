@@ -4,8 +4,76 @@ let cat = {
     happiness: 50,
     fitness: 50,
     cleanliness: 70,
-
 }
+
+let actionCounts = {
+    feed: 0,
+    water: 0,
+    play: 0,
+    clean: 0,
+}
+
+let achievements = [
+    {
+        id: "foodLover",
+        name: "Food Lover",
+        icon: "🍗",
+        description: "Feed your cat 5 times.",
+        unlocked: false
+    },
+    {
+        id: "hydrationHero",
+        name: "Hydration Hero",
+        icon: "💧",
+        description: "Give your cat water 5 times.",
+        unlocked: false
+    },
+    {
+        id: "playfulPaws",
+        name: "Playful Paws",
+        icon: "🧶",
+        description: "Play with your cat 5 times.",
+        unlocked: false
+    },
+    {
+        id: "cleanKitty",
+        name: "Clean Kitty",
+        icon: "🛁",
+        description: "Clean your cat 5 times.",
+        unlocked: false
+    },
+    {
+        id: "happyCat",
+        name: "Happy Cat",
+        icon: "😻",
+        description: "Make your cat's happiness reach 90.",
+        unlocked: false
+    },
+    {
+        id: "overfedCat",
+        name: "Overfed Cat",
+        icon: "🍽️",
+        description: "Make your cat's fullness reach 100.",
+        unlocked: false
+    },
+    {
+        id: "fitnessStar",
+        name: "Fitness Star",
+        icon: "🏋️‍♂️",
+        description: "Make your cat's fitness reach 100.",
+        unlocked: false
+    },
+    {
+        id: "superCaretaker",
+        name: "Super Caretaker",
+        icon: "🌟",
+        description: "Perform 15 care actions in total.",
+        unlocked: false
+    }
+]
+
+
+    
 
 function updateStatus() {
 
@@ -16,7 +84,7 @@ function updateStatus() {
     document.getElementById("cleanliness").textContent = cat.cleanliness;
 
     checkEvents();
-
+    checkAchievements();
 }
 
 function limitStats() {
@@ -27,6 +95,87 @@ function limitStats() {
     cat.cleanliness = Math.max(0, Math.min(100, cat.cleanliness));
 }
 
+// ACHIEVEMENTS
+
+function checkAchievements() {
+    let totalActions=
+    actionCounts.feed +
+    actionCounts.water +
+    actionCounts.play +
+    actionCounts.clean;
+
+    let newlyUnlocked = [];
+
+    achievements.forEach(function(badge) {
+        let earned = false;
+
+        if (badge.id === "foodLover" && actionCounts.feed >= 5) {
+            earned = true;
+        } else if (badge.id === "hydrationHero" && actionCounts.water >= 5) {
+            earned = true;
+        } else if (badge.id === "playfulPaws" && actionCounts.play >= 5) {
+            earned = true;
+        }
+        else if (badge.id === "cleanKitty" && actionCounts.clean >= 5) {
+            earned = true;
+        } else if (badge.id === "happyCat" && cat.happiness >= 90) {
+            earned = true;
+        } else if (badge.id === "overfedCat" && cat.fullness >= 100) {
+            earned = true;
+        } else if (badge.id === "fitnessStar" && cat.fitness >= 100) {
+            earned = true;
+        } else if (badge.id === "superCaretaker" && totalActions >= 15) {
+            earned = true;
+        }
+
+        if (earned && !badge.unlocked) {
+            badge.unlocked = true;
+            newlyUnlocked.push(badge);
+        }
+
+    })
+
+    if (newlyUnlocked.length > 0) {
+        document.getElementById("badgeMessage").textContent = "Achievement Unlocked: " + 
+        newlyUnlocked.map(function(badge) {
+            return badge.icon + " " + badge.name;
+        }).join(", ") + "!";
+    } else {
+        let unlockedCount = achievements.filter(function(badge) {
+            return badge.unlocked;
+        }).length;
+
+        document.getElementById("badgeMessage").textContent = 
+        "Badges unlocked: " + unlockedCount +
+         " / " + achievements.length;
+        }
+    displayAchievements();
+    }
+
+// DISPLAY BADGES 
+
+function displayAchievements() {
+    let container = document.getElementById("badgeContainer");
+    container.innerHTML = "";
+    
+    achievements.forEach(function(badge) {
+        let badgeCard= document.createElement("div");
+        badgeCard.className = badge.unlocked ? "badge unlocked" : "badge locked";
+        let icon = badge.unlocked ? badge.icon: "🔒";
+
+        let status = badge.unlocked ? "Unlocked" : "Not unlocked yet";
+
+        badgeCard.innerHTML = `
+            <div class= "badgeIcon">${icon}</div>
+            <h3>${badge.name}</h3>
+            <p>${badge.description}</p>
+            <p>${status}</p>
+        `;
+
+        container.appendChild(badgeCard);
+    });
+}
+        
 
 //INTERACTIVE BUTTONS
 

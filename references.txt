@@ -1,0 +1,6 @@
+The JavaScript Ternary Operator:
+    https://www.w3schools.com/jS/js_if_ternary.asp
+
+Interpolation:
+    https://www.w3schools.com/js/js_string_templates.asp
+
