@@ -177,11 +177,7 @@ function checkAchievements() {
         }
     displayAchievements();
 
-        let allUnlocked = achievements.every(function(badge) {return badge.unlocked;});
-
-            if (allUnlocked) {
-                document.getElementById("confettiButton").style.display = "inline-block";
-            }
+       
     }
 
 // DISPLAY BADGES 
@@ -208,22 +204,7 @@ function displayAchievements() {
     });
 }
 
-const button = document.getElementById("confettiButton");
-
-button.addEventListener('click', () => {
-    cat.happiness += 40;
-    new Audio("sounds/partyblower.mp3").play();
-    
-    confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: .6 }
-    });
-
-    limitStats();
-    updateStatus();
-})
-        
+   
 
 //INTERACTIVE BUTTONS
 
