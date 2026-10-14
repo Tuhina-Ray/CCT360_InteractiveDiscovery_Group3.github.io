@@ -82,7 +82,19 @@ function delayImageChange(path) {
     setTimeout(function() {
         updateCatImage(path)
     }, 2000); // 2 seconds
-}    
+}
+
+// update progress bars
+function updateCatBars() {
+    const stats = ['fullness', 'hydration', 'happiness', 'fitness', 'cleanliness'];
+
+    stats.forEach(function(stat) {
+        const value = cat[stat];
+        const bar = document.getElementById(stat + 'Bar');
+
+        bar.style.width = value + '%';
+    });
+}
 
 function updateStatus() {
 
@@ -92,6 +104,7 @@ function updateStatus() {
     document.getElementById("fitness").textContent = cat.fitness;
     document.getElementById("cleanliness").textContent = cat.cleanliness;
 
+    updateCatBars();
     checkEvents();
     checkAchievements();
 }
@@ -324,3 +337,5 @@ function checkEvents(){
 
         meowSound.play();
     })
+
+updateStatus();

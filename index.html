@@ -17,13 +17,49 @@
         <p id="eventMessage"></p>
 
         <div id="mainContent">
+            
             <div id="catStatus">
                 <h2>Cat Status</h2>
-                <p>Fullness: <span id="fullness">50</span></p>
-                <p>Hydration: <span id="hydration">30</span></p>
-                <p>Happiness: <span id="happiness">50</span></p>
-                <p>Fitness: <span id="fitness">50</span></p>
-                <p>Cleanliness: <span id="cleanliness">70</span></p>
+
+                <div class="status-row">
+                    <span class="status-label">Fullness:</span>
+                    <div class="progress-container">
+                        <div id="fullnessBar" class="progress-bar"></div>
+                    </div>
+                    <span id="fullness">50</span>%
+                </div>
+
+                <div class="status-row">
+                    <span class="status-label">Hydration:</span>
+                    <div class="progress-container">
+                        <div id="hydrationBar" class="progress-bar"></div>
+                    </div>
+                    <span id="hydration">30</span>%
+                </div>
+
+                <div class="status-row">
+                    <span class="status-label">Happiness:</span>
+                    <div class="progress-container">
+                        <div id="happinessBar" class="progress-bar"></div>
+                    </div>
+                    <span id="happiness">50</span>%
+                </div>
+
+                <div class="status-row">
+                    <span class="status-label">Fitness:</span>
+                    <div class="progress-container">
+                        <div id="fitnessBar" class="progress-bar"></div>
+                    </div>
+                    <span id="fitness">50</span>%
+                </div>
+
+                <div class="status-row">
+                    <span class="status-label">Cleanliness:</span>
+                    <div class="progress-container">
+                        <div id="cleanlinessBar" class="progress-bar"></div>
+                    </div>
+                    <span id="cleanliness">70</span>%
+                </div>
             </div>
             
             <div id="imageContainer">
