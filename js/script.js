@@ -301,3 +301,18 @@ function checkEvents(){
     eventMessage.textContent = events.join(" ");
 
 }
+
+ // PET FEATURE: MEOW WHEN CAT IS CLICKED 
+
+    const catImage = document.getElementById("catImage");
+
+    const meowSounds = [ "sounds/meow1.mp3","sounds/meow2.mp3","sounds/meow3.mp3"]
+
+    catImage.addEventListener("click", function(){
+        const meowSound = new Audio(meowSounds[Math.floor(Math.random() * meowSounds.length)]);
+        cat.happiness += 5; 
+        limitStats();
+        updateStatus(); 
+
+        meowSound.play();
+    })
