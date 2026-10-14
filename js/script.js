@@ -72,8 +72,17 @@ let achievements = [
     }
 ]
 
+// updates the image of the cat depending on context
+function updateCatImage(path) {
+    document.getElementById('catImage').src = path;
+}
 
-    
+// to delay the image change in checkEvents
+function delayImageChange(path) {
+    setTimeout(function() {
+        updateCatImage(path)
+    }, 2000); // 2 seconds
+}    
 
 function updateStatus() {
 
@@ -180,37 +189,27 @@ function displayAchievements() {
 //INTERACTIVE BUTTONS
 
 document.getElementById("playButton").addEventListener("click", function() {
-    
-    
-    if (cat.fullness <= 10 || cat.hydration <= 10) {
-        cat.happiness -= 5;
-        document.getElementById("catMessage").textContent = "Your cat is too hungry or thirsty to play!";
-    } else {
-        cat.fullness -= 10;
-        cat.hydration -= 15;
-        cat.happiness += 15;
-        cat.fitness += 10;
-        cat.cleanliness -= 10;
+    cat.fullness -= 10;
+    cat.hydration -= 15;
+    cat.happiness += 15;
+    cat.fitness += 10;
+    cat.cleanliness -= 10;
 
-        document.getElementById("catMessage").textContent = "Your cat had fun playing!";
-    }
-
+    document.getElementById('catMessage').textContent = 'Your cat had fun playing!';
+    updateCatImage('images/happy-cat.jpg');
+    
     limitStats();
     updateStatus();
-
 });
 
 document.getElementById("feedButton").addEventListener("click", function() {
-    if (cat.fullness >= 90) {
-        document.getElementById("catMessage").textContent = "Your cat is too full to eat!";
-    } else {
-        cat.fullness += 25;
-        cat.happiness += 5;
-        cat.fitness -= 10;
+    cat.fullness += 25;
+    cat.happiness += 5;
+    cat.fitness -= 10;
 
-        document.getElementById("catMessage").textContent = "Your cat enjoyed its food!";
-    }
-
+    document.getElementById('catMessage').textContent = 'Your cat enjoyed its food :)';
+    updateCatImage('images/eating-cat.jpg');
+    
     limitStats();
     updateStatus();
 });
@@ -219,22 +218,23 @@ document.getElementById("waterButton").addEventListener("click", function() {
     cat.hydration += 30;
     cat.happiness += 2;
 
+    document.getElementById("catMessage").textContent = "Your cat drank some water!";
+    updateCatImage('images/drinking-cat.jpg');
+    
     limitStats();
     updateStatus();
-
-    document.getElementById("catMessage").textContent = "Your cat drank some water!";
 });
 
 
 document.getElementById("cleanButton").addEventListener("click", function() {
-    
     cat.happiness -= 10;
     cat.cleanliness += 30; 
-
-    limitStats();
-    updateStatus();
-
+    
     document.getElementById("catMessage").textContent = "You bathed your cat!";
+    updateCatImage('images/clean-cat.jpg');
+    
+    limitStats();
+    updateStatus();  
 });
 
 
@@ -243,6 +243,7 @@ document.getElementById("cleanButton").addEventListener("click", function() {
 function checkEvents(){
 
     let events = [];
+    let catImage = 'images/content-cat.jpg'; // default image
 
     const eventMessage = document.getElementById("eventMessage");
     
@@ -254,7 +255,6 @@ function checkEvents(){
     } 
 
 
-    //fullness
     // Fullness
     if (cat.fullness <= 10) {
         events.push("Your cat is hungry!");
@@ -285,6 +285,18 @@ function checkEvents(){
     } else if (cat.fitness >= 90) {
         events.push("Your cat is very fit!");
     }
+
+    // checks to update the image
+    // these checks are here to ensure these conditions have priority
+    if (cat.hydration <= 10 || cat.fullness <= 10 || cat.fullness >= 90 || cat.cleanliness <= 10 || cat.happiness <= 10 || cat.fitness <= 10) {
+        catImage = 'images/sad-cat.jpg';
+    }
+    else if (cat.happiness >= 90 || cat.fitness >= 90) {
+        catImage = 'images/happy-cat.jpg';
+    }
+
+    // update cat's image accordingly with a delay, to allow for the button-click image-change to show
+    delayImageChange(catImage);
 
     eventMessage.textContent = events.join(" ");
 
