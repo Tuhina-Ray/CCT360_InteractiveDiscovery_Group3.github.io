@@ -3,7 +3,7 @@
     
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>interactive discovery</title>
         <link rel="stylesheet" href="css/style.css">
 
@@ -11,32 +11,43 @@
 
     <body>
 
-        <h1>Interactive Discovery: My Pet Cat working title </h1>
+        <h1>Interactive Discovery: My Pet Cat🐾</h1>
 
         <p id="catMessage"> Your cat is waiting for you!</p>
         <p id="eventMessage"></p>
 
-        <img id="catImage" src="images/content-cat.jpg" alt="content cat">
+        <div id="mainContent">
+            <div id="catStatus">
+                <h2>Cat Status</h2>
+                <p>Fullness: <span id="fullness">50</span></p>
+                <p>Hydration: <span id="hydration">30</span></p>
+                <p>Happiness: <span id="happiness">50</span></p>
+                <p>Fitness: <span id="fitness">50</span></p>
+                <p>Cleanliness: <span id="cleanliness">70</span></p>
+            </div>
+            
+            <div id="imageContainer">
+                <img id="catImage" src="images/content-cat.jpg" alt="content cat">
+            </div>
 
-        <h2>Cat Status</h2>
-
-        <p>Fullness: <span id="fullness">50</span></p>
-        <p>Hydration: <span id="hydration">30</span></p>
-        <p>Happiness: <span id="happiness">50</span></p>
-        <p>Fitness: <span id="fitness">50</span></p>
-        <p>Cleanliness: <span id="cleanliness">70</span></p>
-
-
-        <button id="playButton">Play</button>
-        <button id="feedButton">Feed</button>
-        <button id="waterButton">Give Water</button>
-        <button id="cleanButton">Clean</button>
-
-        <h2>Achievements</h2>
-        <p id="badgeMessage">Take care of your cat to unlock badges!</p>
-        <div id="badgeContainer">
-            <!-- Badges will be displayed here -->
+            <div id="buttons">
+                <button id="playButton">Play</button>
+                <button id="feedButton">Feed</button>
+                <button id="waterButton">Give Water</button>
+                <button id="cleanButton">Clean</button>
+            </div>
         </div>
+        
+        <hr>
+
+        <div id="achievements">
+            <h2>Achievements</h2>
+            <p id="badgeMessage">Take care of your cat to unlock badges!</p>
+            <div id="badgeContainer">
+                <!-- Badges will be displayed here -->
+            </div> 
+        </div>
+        
 
 
         <script src="js/script.js" type="text/javascript"></script>
