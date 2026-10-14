@@ -189,6 +189,7 @@ function displayAchievements() {
 //INTERACTIVE BUTTONS
 
 document.getElementById("playButton").addEventListener("click", function() {
+    new Audio("sounds/squeak.mp3").play();
     cat.fullness -= 10;
     cat.hydration -= 15;
     cat.happiness += 15;
@@ -203,6 +204,7 @@ document.getElementById("playButton").addEventListener("click", function() {
 });
 
 document.getElementById("feedButton").addEventListener("click", function() {
+    new Audio("sounds/eat.mp3").play();
     cat.fullness += 25;
     cat.happiness += 5;
     cat.fitness -= 10;
@@ -215,6 +217,7 @@ document.getElementById("feedButton").addEventListener("click", function() {
 });
 
 document.getElementById("waterButton").addEventListener("click", function() {
+    new Audio("sounds/water.mp3").play();
     cat.hydration += 30;
     cat.happiness += 2;
 
@@ -227,6 +230,7 @@ document.getElementById("waterButton").addEventListener("click", function() {
 
 
 document.getElementById("cleanButton").addEventListener("click", function() {
+    new Audio("sounds/bubbles.mp3").play();
     cat.happiness -= 10;
     cat.cleanliness += 30; 
     
