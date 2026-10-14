@@ -176,6 +176,12 @@ function checkAchievements() {
          " / " + achievements.length;
         }
     displayAchievements();
+
+        let allUnlocked = achievements.every(function(badge) {return badge.unlocked;});
+
+            if (allUnlocked) {
+                document.getElementById("confettiButton").style.display = "inline-block";
+            }
     }
 
 // DISPLAY BADGES 
@@ -201,6 +207,22 @@ function displayAchievements() {
         container.appendChild(badgeCard);
     });
 }
+
+const button = document.getElementById("confettiButton");
+
+button.addEventListener('click', () => {
+    cat.happiness += 40;
+    new Audio("sounds/partyblower.mp3").play();
+    
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: .6 }
+    });
+
+    limitStats();
+    updateStatus();
+})
         
 
 //INTERACTIVE BUTTONS
