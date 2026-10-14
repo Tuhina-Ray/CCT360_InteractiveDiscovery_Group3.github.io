@@ -145,10 +145,14 @@ function checkAchievements() {
     })
 
     if (newlyUnlocked.length > 0) {
+        new Audio("sounds/badge.mp3").play();
+        
         document.getElementById("badgeMessage").textContent = "Achievement Unlocked: " + 
         newlyUnlocked.map(function(badge) {
-            return badge.icon + " " + badge.name;
+            return badge.icon + " " + badge.name; 
         }).join(", ") + "!";
+        alert("New Achievement Unlocked!!");
+        
     } else {
         let unlockedCount = achievements.filter(function(badge) {
             return badge.unlocked;
